@@ -1,4 +1,4 @@
-<img src="./example.png"<\img>
+<img src="./example.png">
 # lyricstranslate.py
 use lyricstranslate to get lyrics translation
 
