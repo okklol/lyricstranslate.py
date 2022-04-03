@@ -21,4 +21,6 @@ pip3 install selenium
 pip3 install webdriver_manager
 pip3 install dbus-python
 git clone https://github.com/okklol/lyricstranslate.py.git
+sudo chmod +x ./lyricstranslate.py/lyrics
+sudo mv ~/lyricstranslate.py/lyrics /usr/bin/
 ```
