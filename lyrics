@@ -7,28 +7,38 @@ from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 import dbus
 
-def get_song_name():
-    try:
-        session_bus = dbus.SessionBus()
-        spotify_bus = session_bus.get_object("org.mpris.MediaPlayer2.spotify",
-                                            "/org/mpris/MediaPlayer2")
-        spotify_properties = dbus.Interface(spotify_bus,
-                                            "org.freedesktop.DBus.Properties")
-        metadata = spotify_properties.Get("org.mpris.MediaPlayer2.Player", "Metadata")
-    except:
-        print('no track currently playing')
-        quit()
-    try:
-        return(metadata['xesam:title'])
-    except:
-        print('error')
-        quit()
+class get_song_artist:
+    def __init__(self) -> None:
+        try:
+            session_bus = dbus.SessionBus()
+            spotify_bus = session_bus.get_object("org.mpris.MediaPlayer2.spotify",
+                                                "/org/mpris/MediaPlayer2")
+            spotify_properties = dbus.Interface(spotify_bus,
+                                                "org.freedesktop.DBus.Properties")
+            self.metadata = spotify_properties.Get("org.mpris.MediaPlayer2.Player", "Metadata")
+        except:
+            print('an error occured, are you sure you are playing a spotify song?')
+        pass
+    def get_song_name(self) -> str:
+        try:
+            return self.metadata['xesam:title']
+        except:
+            print('error on song name')
+            quit()
+    def get_artist_name(self) -> str:
+        try:
+            artistdata = self.metadata["xesam:albumArtist"]
+            return(next(iter(artistdata)))
+        except:
+            print('error on artist')
+            quit()
 
 def get_soup_0 ():
+    q = get_song_artist()
     options = webdriver.FirefoxOptions() # define webdriver options
     options.add_argument('--headless') # add arfguments to webdriver options
     browser = webdriver.Firefox(options=options, service=Service(executable_path='/bin/geckodriver')) # define webdriver
-    browser.get('https://lyricstranslate.com/en/site-search?query=' + get_song_name()) # open url
+    browser.get('https://lyricstranslate.com/en/site-search?query=' + q.get_song_name() + q.get_artist_name()) # open url
     html = browser.page_source # get html
     soup0 = BeautifulSoup(html, 'lxml').find('a', class_="gs-title")['href'] # get soup0
     browser.quit() # quit broweser
