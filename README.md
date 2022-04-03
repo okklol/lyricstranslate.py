@@ -8,8 +8,8 @@ use lyricstranslate to get lyrics translation
 - it will translate the song to your local language
 
 ### dependencies:
-- BeautifulSoup4 (pip3 install beautifulsoup4)
-- selenium (pip3 install selenium)
-- webdriver_manager (pip3 install webdriver_manager)
-- dbus-python (pip3 install dbus-python)
+- BeautifulSoup4 (```pip3 install beautifulsoup4```)
+- selenium (```pip3 install selenium```)
+- webdriver_manager (```pip3 install webdriver_manager```)
+- dbus-python (```pip3 install dbus-python```)
 - requests
