@@ -18,7 +18,7 @@ use lyricstranslate to get lyrics translation
 ```
 pip3 install beautifulsoup4
 pip3 install selenium
-pip3 install webdriver_manager`
+pip3 install webdriver_manager
 pip3 install dbus-python
 
 ```
