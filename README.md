@@ -1,7 +1,8 @@
 # lyricstranslate.py
 use lyricstranslate to get lyrics translation
 
-usage: run the script to get the lyrics translated, uses current spotify playing song
+#usage
+- run the script to get the lyrics translated, uses current spotify playing song
 
 dependencies:
 - BeautifulSoup4 (pip3 install beautifulsoup4)
